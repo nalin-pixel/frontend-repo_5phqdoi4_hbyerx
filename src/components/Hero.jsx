@@ -2,8 +2,14 @@ import Spline from '@splinetool/react-spline'
 import { motion } from 'framer-motion'
 
 export default function Hero() {
+  const onAnchorClick = (e, hash) => {
+    e.preventDefault()
+    const el = document.querySelector(hash)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
-    <section id="home" className="relative w-full overflow-hidden">
+    <section id="home" className="relative w-full overflow-hidden scroll-mt-20">
       {/* Mobile: dedicated interactive Spline area */}
       <div className="relative h-[70vh] w-full md:hidden" style={{ touchAction: 'manipulation' }}>
         <Spline
@@ -54,10 +60,10 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <a href="#work" className="inline-flex items-center rounded-full bg-white/90 hover:bg-white text-slate-900 px-5 py-2.5 text-sm font-semibold transition-colors">
+            <a href="#work" onClick={(e) => onAnchorClick(e, '#work')} className="inline-flex items-center rounded-full bg-white/90 hover:bg-white text-slate-900 px-5 py-2.5 text-sm font-semibold transition-colors">
               View Work
             </a>
-            <a href="#contact" className="inline-flex items-center rounded-full bg-slate-900/50 ring-1 ring-white/20 hover:bg-slate-900/70 text-white px-5 py-2.5 text-sm font-semibold">
+            <a href="#contact" onClick={(e) => onAnchorClick(e, '#contact')} className="inline-flex items-center rounded-full bg-slate-900/50 ring-1 ring-white/20 hover:bg-slate-900/70 text-white px-5 py-2.5 text-sm font-semibold">
               Contact
             </a>
           </motion.div>

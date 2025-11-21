@@ -21,7 +21,7 @@ const projects = [
 
 export default function Showcase() {
   return (
-    <section id="work" className="relative py-28">
+    <section id="work" className="relative py-28 scroll-mt-20">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,0.15),transparent_25%),radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.12),transparent_25%)]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-10">
