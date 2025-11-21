@@ -3,15 +3,33 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden flex items-center">
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+    <section id="home" className="relative w-full overflow-hidden">
+      {/* Mobile: dedicated interactive Spline area */}
+      <div className="relative h-[70vh] w-full md:hidden" style={{ touchAction: 'manipulation' }}>
+        <Spline
+          scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
+          style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/90" />
+        <div className="pointer-events-none absolute bottom-3 left-0 right-0 flex justify-center">
+          <span className="inline-flex items-center rounded-full bg-slate-900/60 backdrop-blur px-3 py-1 text-[11px] text-slate-200 ring-1 ring-white/15">
+            Drag to explore
+          </span>
+        </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/30 to-slate-950/90 pointer-events-none" />
+      {/* Desktop: Spline as immersive background */}
+      <div className="absolute inset-0 hidden md:block" style={{ touchAction: 'manipulation' }}>
+        <Spline
+          scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
+          style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 hidden md:block bg-gradient-to-b from-slate-950/70 via-slate-950/30 to-slate-950/90" />
 
+      {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
-        <div className="py-28">
+        <div className="py-10 md:py-28">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,6 +73,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* Spacer to balance layout on desktop */}
         <div className="hidden md:block" />
       </div>
     </section>
